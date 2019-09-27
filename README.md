@@ -1,12 +1,12 @@
 # Alkalmazások fejlesztése
 ## FUNKCIONÁLIS KÖVETELMÉNY:
-- A weboldalon jelenjenek meg a pizza kínálatok
-- lehessen vega vagy húsos közül választani**
+- A weboldalon megjelennek a pizza kínálatok
+- lehet vega vagy húsos közül választani
 - Legnébszerűbb rendelések listázása (top5)
-- A kiválasztott pizzához legyen lehetőség extra feltétet hozzáadni
-- Lehessen listázni a pizzákat, feltéteket
+- A kiválasztott pizzához lehetőség van extra feltétet hozzáadni
+- Lehet listázni a pizzákat, feltéteket
 - Csak regisztrálva lehet rendelni, de a pizzakínálatot a nem regisztrált (vendég) felhasználók is láthatják
-- Kosárba lehet helyezni a kívánt terméket a regisztrált vendégeknek, ahonnan meg lehet rendelni őket
+- Kosárba lehet helyezni a kívánt terméket a regisztrált vendégeknek, ahonnan meg tudják rendelni őket
 ## NEM FUNKCIONÁLIS KÖVETELMÉNY:
 - Felhasználóbarát, ergonomikus elrendezés és kinézet
 - Gyors működés
@@ -16,7 +16,7 @@
 - Felhasználó, aki azonosítatlanul használja az alkalmazés
 - Látja a pizzakínálatot és egyéb funkcióit az oldalnak de rendelni nem tud
 ### REGISZTRÁLT FELHASZNÁLÓ:
-- Felhasználó, aki azonosítva van (be van regisztrálva)
+- Felhasználó, aki azonosítva van (regisztrálva van)
 - A "Rendelés" gombot látja, meg tudja rendelni a kiválasztott terméket
 ### ADMIN:
-- Hozzás tud adni (létrehozni) és el tud venni (törölni) pizzákat
+- Hozzá tud adni (létrehozni) és el tud venni (törölni) pizzákat
