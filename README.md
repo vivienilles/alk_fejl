@@ -13,7 +13,7 @@
 - Biztonságos működés: jelszavak tárolása, funkciókhoz való hozzáférés
 ## SZEREPKÖRÖK
 ### VENDÉG:
-- Felhasználó, aki azonosítatlanul használja az alkalmazés
+- Felhasználó, aki azonosítatlanul használja az alkalmazást
 - Látja a pizzakínálatot és egyéb funkcióit az oldalnak de rendelni nem tud
 ### REGISZTRÁLT FELHASZNÁLÓ:
 - Felhasználó, aki azonosítva van (regisztrálva van)
