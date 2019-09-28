@@ -1,4 +1,4 @@
-# Alkalmazások fejlesztése
+# Alkalmazások fejlesztése (pizza rendelés)
 ## FUNKCIONÁLIS KÖVETELMÉNY:
 - A weboldalon megjelennek a pizza kínálatok
 - lehet vega vagy húsos közül választani
