@@ -20,7 +20,7 @@ public class Basket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    /*@Column
     private String name;
 
     @JsonIgnore
@@ -29,5 +29,11 @@ public class Basket {
 
     @JsonIgnore
     @OneToOne
+    private User user;*/
+
+    @ManyToOne
     private User user;
+
+    @ManyToOne
+    private Pizza pizza;
 }

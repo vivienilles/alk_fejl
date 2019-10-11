@@ -23,13 +23,12 @@ public class Pizza {
     @Column
     private String name;
 
-    @JsonIgnore
+    /*@JsonIgnore
     @ManyToOne
-    private User user;
+    private User user;*/
 
-    @JsonIgnore
+    /*@JsonIgnore
     @ManyToOne
-    private Basket basket;
-
+    private Basket basket;*/
 
 }

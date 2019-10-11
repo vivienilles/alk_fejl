@@ -9,5 +9,5 @@ import java.util.Optional;
 
 @Repository
 public interface BasketRepository extends CrudRepository<Basket, Integer> {
-    Optional<User> findByUsername(String username);
+   // Optional<User> findByUsername(String username);
 }
