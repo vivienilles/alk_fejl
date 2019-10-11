@@ -8,6 +8,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 
 @Entity
@@ -39,4 +41,8 @@ public class User {
         ROLE_GUEST, ROLE_USER, ROLE_ADMIN
     }
 
+
+    @JsonIgnore
+    @OneToOne
+    private Basket basket;
 }
