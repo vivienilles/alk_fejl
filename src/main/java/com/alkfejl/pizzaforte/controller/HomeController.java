@@ -46,4 +46,9 @@ public class HomeController {
 
         return ResponseEntity.ok(basketRepository.save(actBasket));
     }
+
+    @GetMapping("/listall")
+    public Iterable<Pizza> listAll() {
+        return pizzaRepository.findAll();
+    }
 }
