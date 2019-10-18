@@ -23,6 +23,9 @@ public class Pizza {
     @Column
     private String name;
 
+    @OneToMany (mappedBy = "pizza")
+    private List<Ingredient> ingredientList;
+
     /*@JsonIgnore
     @ManyToOne
     private User user;*/
