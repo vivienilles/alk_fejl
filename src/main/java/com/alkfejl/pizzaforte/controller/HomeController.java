@@ -6,6 +6,7 @@ import com.alkfejl.pizzaforte.entity.User;
 import com.alkfejl.pizzaforte.repository.BasketRepository;
 import com.alkfejl.pizzaforte.repository.PizzaRepository;
 import com.alkfejl.pizzaforte.repository.UserRepository;
+import com.alkfejl.pizzaforte.security.AuthenticatedUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,19 +28,20 @@ public class HomeController {
     @Autowired
     PizzaRepository pizzaRepository;
 
+    @Autowired
+    AuthenticatedUser actUser;
+
     @GetMapping("/home")
     public Basket homepage() {
-        return basketRepository.findByUserId(1);
+        return basketRepository.findByUserId(actUser.getUser().getId());
     }
 
     @PostMapping("/addtobasket")
     public ResponseEntity<Basket> addToBasket(@RequestBody Pizza pizza) {
-        Optional<User> oUser = userRepository.findById(1);
-        User actUser = oUser.get();
 
         Pizza actPizza = pizzaRepository.findById(pizza.getId()).get();
 
-        Basket actBasket = basketRepository.findByUserId(actUser.getId());
+        Basket actBasket = basketRepository.findByUserId(actUser.getUser().getId());
         actBasket.getPizza().add(actPizza);
 
         return ResponseEntity.ok(basketRepository.save(actBasket));
