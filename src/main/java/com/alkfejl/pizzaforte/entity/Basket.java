@@ -34,6 +34,6 @@ public class Basket {
     @ManyToOne
     private User user;
 
-    @ManyToOne
-    private Pizza pizza;
+    @OneToMany
+    private List<Pizza> pizza;
 }

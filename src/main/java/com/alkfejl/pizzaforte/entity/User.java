@@ -41,7 +41,7 @@ public class User {
         ROLE_GUEST, ROLE_USER, ROLE_ADMIN
     }
     
-    @JsonIgnore
+    /*@JsonIgnore
     @OneToOne
-    private Basket basket;
+    private Basket basket;*/
 }

@@ -27,8 +27,4 @@ public class Pizza {
     @ManyToOne
     private User user;*/
 
-    /*@JsonIgnore
-    @ManyToOne
-    private Basket basket;*/
-
 }
