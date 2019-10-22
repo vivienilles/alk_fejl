@@ -51,4 +51,16 @@ public class HomeController {
     public Iterable<Pizza> listAll() {
         return pizzaRepository.findAll();
     }
+
+    @DeleteMapping("/removefrombasket")
+    public ResponseEntity<Basket> removeFromBasket(@RequestBody Pizza pizza) {
+
+        Pizza actPizza = pizzaRepository.findById(pizza.getId()).get();
+
+        Basket actBasket = basketRepository.findByUserId(actUser.getUser().getId());
+        actBasket.getPizza().remove(actPizza);
+        basketRepository.save(actBasket);
+        return ResponseEntity.ok(actBasket);
+    }
 }
+
