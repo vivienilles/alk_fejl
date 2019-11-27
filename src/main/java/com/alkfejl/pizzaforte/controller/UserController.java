@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/register")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
@@ -22,7 +22,7 @@ public class UserController {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    @PostMapping("")
+    @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody User user) {
         Optional<User> oUser = userRepository.findByUsername(user.getUsername());
         if (oUser.isPresent()) {
