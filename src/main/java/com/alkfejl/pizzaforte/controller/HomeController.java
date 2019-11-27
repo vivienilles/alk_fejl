@@ -1,9 +1,11 @@
 package com.alkfejl.pizzaforte.controller;
 
 import com.alkfejl.pizzaforte.entity.Basket;
+import com.alkfejl.pizzaforte.entity.Ingredient;
 import com.alkfejl.pizzaforte.entity.Pizza;
 import com.alkfejl.pizzaforte.entity.User;
 import com.alkfejl.pizzaforte.repository.BasketRepository;
+import com.alkfejl.pizzaforte.repository.IngredientRepository;
 import com.alkfejl.pizzaforte.repository.PizzaRepository;
 import com.alkfejl.pizzaforte.repository.UserRepository;
 import com.alkfejl.pizzaforte.security.AuthenticatedUser;
@@ -29,9 +31,12 @@ public class HomeController {
     PizzaRepository pizzaRepository;
 
     @Autowired
+    IngredientRepository ingredientRepository;
+
+    @Autowired
     AuthenticatedUser actUser;
 
-    @GetMapping("/home")
+    @GetMapping("")
     public Basket homepage() {
         return basketRepository.findByUserId(actUser.getUser().getId());
     }
@@ -62,5 +67,16 @@ public class HomeController {
         basketRepository.save(actBasket);
         return ResponseEntity.ok(actBasket);
     }
+
+    @PostMapping("/createpizza")
+        public ResponseEntity<Pizza> createPizza(@RequestBody Pizza pizza) {
+            pizzaRepository.save(pizza);
+            List<Ingredient> ingredients = pizza.getIngredientList();
+            for(Ingredient actIngredient : ingredients) {
+                actIngredient.setPizza(pizza);
+                ingredientRepository.save(actIngredient);
+            }
+            return ResponseEntity.ok(pizza);
+        }
 }
 
