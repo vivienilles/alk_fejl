@@ -1,0 +1,95 @@
+<form #form="ngForm" (ngSubmit)="submitPizza(form.form)">
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Title"
+        [(ngModel)]="pizza.title"
+        name="title"
+        required
+        #title="ngModel"
+        [disabled]="mode === 'edit'"
+      />
+      <mat-error
+        *ngIf="
+          title.invalid &&
+          (title.touched || title.dirty) &&
+          title.errors['required']
+        "
+      >
+        Title is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Ingredient"
+        value=""
+        [(ngModel)]="pizza.ingredient"
+        name="ingredient"
+        required
+        #place="ngModel"
+        pattern="PC-\d+"
+      />
+      <mat-error
+        *ngIf="
+          ingredient.invalid &&
+          (ingredient.touched || ingredient.dirty) &&
+          ingredient.errors['required']
+        "
+      >
+        Ingredient is required!
+      </mat-error>
+      <mat-error
+        *ngIf="
+          ingredient.invalid &&
+          (ingredient.touched || ingredient.dirty) &&
+          ingredient.errors['pattern']
+        "
+      >
+        Ingredient is not a valid room ID!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <mat-select
+        [(ngModel)]="pizza.status"
+        name="status"
+        required
+        #status="ngModel"
+        [disabled]="mode === 'create'"
+      >
+        <mat-option *ngFor="let status of statuses" [value]="status.value">
+          {{ status.label }}
+        </mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="
+          status.invalid &&
+          (status.touched || status.dirty) &&
+          status.errors['required']
+        "
+      >
+        Status is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <textarea
+        [(ngModel)]="pizza.description"
+        name="description"
+        matInput
+        placeholder="Description"
+        value=""
+      ></textarea>
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button color="primary">Submit</button>
+  </div>
+</form>

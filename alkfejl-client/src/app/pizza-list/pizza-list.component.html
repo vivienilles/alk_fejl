@@ -1,0 +1,36 @@
+<div>
+    <h1>Pizza list</h1>
+    <div>
+        <app-status-filter></app-status-filter>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Topping</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container
+                *ngIf="pizzaService.filteredPizzas.length > 0"
+            >
+                <tr
+                    *ngFor="let issue of pizzaService.filteredPizzas"
+                    [routerLink]="['/', 'pizzas', pizza.id]"
+                >
+                   <td>{{ pizza.title }}</td>
+                    <td>{{ pizza.topping }}</td>
+                    <td>{{ pizza.status }}</td>
+                </tr>
+            </ng-container>
+            <tr
+                *ngIf="pizzaService.filteredPizzas.length === 0"
+            >
+                <td
+                    colspan="3"
+                >No pizzas</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

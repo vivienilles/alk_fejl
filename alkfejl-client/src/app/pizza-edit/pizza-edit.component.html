@@ -1,0 +1,9 @@
+<div style="padding-left: 4em;">
+    <h1>Edit pizza</h1>
+    <app-pizza-form
+        *ngIf="pizza"
+        [pizza]="pizza"
+        [mode]="'edit'"
+        (pizzaSubmit)="submitPizza($event)"
+    ></app-pizza-form>
+</div>

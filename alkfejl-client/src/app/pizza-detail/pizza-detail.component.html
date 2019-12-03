@@ -1,0 +1,37 @@
+<div>
+    <div>
+        <span>Title:</span>
+        <span>{{ pizza?.title }}</span>
+    </div>
+    <div>
+        <span>Creation date:</span>
+        <span>{{ pizza?.createdAt | date:'yyyy.MM.dd.' }}</span>
+    </div>
+    <div>
+        <span>Status:</span>
+        <span>{{ pizza?.status }}</span>
+    </div>
+    <div>
+        <span>Place:</span>
+        <span>{{ pizza?.iningredient }}</span>
+    </div>
+    <div>
+        <span>Description:</span>
+        <span>{{ pizza?.description }}</span>
+    </div>
+    <div>
+        <button
+            mat-raised-button
+            color="primary"
+            (click)="editPizza()"
+            [appRole]="[UserRole.Admin]"
+        >Edit</button>
+    </div>
+    <div>
+        <ul>
+            <li *ngFor="let message of pizza.messages">
+                {{ message.body }}
+            </li>
+        </ul>
+    </div>
+</div>

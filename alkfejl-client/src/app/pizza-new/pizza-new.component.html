@@ -1,0 +1,8 @@
+<div style="padding-left: 4em;">
+    <h1>New issue</h1>
+    <app-pizza-form
+        [pizza]="pizza"
+        [mode]="'create'"
+        (pizzaSubmit)="submitPizza($event)"
+    ></app-pizza-form>
+</div>

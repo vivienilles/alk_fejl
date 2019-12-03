@@ -1,0 +1,26 @@
+<mat-toolbar color="primary">
+  <button
+      mat-button
+      routerLink="/"
+  >
+      <mat-icon>home</mat-icon>
+      Pizza Forte
+  </button>
+  <ng-container
+        *ngIf="authService.isLoggedIn"
+    >
+  <button mat-button routerLink="/pizza">Pizzák</button>
+  <button mat-button routerLink="/pizza/new" [appRole]="[UserRole.User]">Új pizzák</button>
+  <button mat-button (click)="authService.logout()">Logout</button>
+</ng-container>
+<ng-container
+        *ngIf="!authService.isLoggedIn"
+    >
+    <button mat-button routerLink="/login">Login</button>
+  </ng-container>
+</mat-toolbar>
+<app-landing></app-landing>
+<app-pizza-list></app-pizza-list>
+<app-pizza-form></app-pizza-form>
+
+<router-outlet></router-outlet>
