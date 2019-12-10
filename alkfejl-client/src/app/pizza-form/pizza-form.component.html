@@ -3,18 +3,18 @@
     <mat-form-field>
       <input
         matInput
-        placeholder="Title"
-        [(ngModel)]="pizza.title"
-        name="title"
+        placeholder="Name"
+        [(ngModel)]="pizza.name"
+        name="name"
         required
-        #title="ngModel"
+        #name="ngModel"
         [disabled]="mode === 'edit'"
       />
       <mat-error
         *ngIf="
-          title.invalid &&
-          (title.touched || title.dirty) &&
-          title.errors['required']
+        name.invalid &&
+          (name.touched || name.dirty) &&
+          name.errors['required']
         "
       >
         Title is required!
@@ -30,7 +30,7 @@
         [(ngModel)]="pizza.ingredient"
         name="ingredient"
         required
-        #place="ngModel"
+        #ingredient="ngModel"
         pattern="PC-\d+"
       />
       <mat-error

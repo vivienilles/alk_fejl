@@ -30,20 +30,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .cors()
+                    .and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/h2/**", "/users/**").permitAll()   // important!
-                .anyRequest().authenticated()
-                //.and()
-                //.formLogin()
-                .and()
+                    .antMatchers("/h2/**", "/users/**").permitAll()   // important!
+                    .anyRequest().authenticated()
+                    .and()
+                .formLogin()
+                    .and()
                 .httpBasic()
-                .and()
-                .headers()      // important!
-                .frameOptions().disable()
-                .and()
+                    .and()
+                .headers()
+                    .frameOptions().disable()
+                    .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
     @Bean

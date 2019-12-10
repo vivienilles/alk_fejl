@@ -25,7 +25,7 @@ export class PizzaEditComponent implements OnInit {
     this.pizza = await this.pizzaService.getPizza(pizzaId);
   }
 
-  async submitIssue(pizza: Pizza) {
+  async submitPizza(pizza: Pizza) {
     pizza.id = this.pizza.id;
     await this.pizzaService.modifyPizza(pizza);
     this.router.navigate(['/', 'pizzas']);

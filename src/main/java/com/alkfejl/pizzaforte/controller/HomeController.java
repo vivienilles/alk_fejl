@@ -3,7 +3,6 @@ package com.alkfejl.pizzaforte.controller;
 import com.alkfejl.pizzaforte.entity.Basket;
 import com.alkfejl.pizzaforte.entity.Ingredient;
 import com.alkfejl.pizzaforte.entity.Pizza;
-import com.alkfejl.pizzaforte.entity.User;
 import com.alkfejl.pizzaforte.repository.BasketRepository;
 import com.alkfejl.pizzaforte.repository.IngredientRepository;
 import com.alkfejl.pizzaforte.repository.PizzaRepository;
@@ -11,12 +10,13 @@ import com.alkfejl.pizzaforte.repository.UserRepository;
 import com.alkfejl.pizzaforte.security.AuthenticatedUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/")
 public class HomeController {
@@ -36,11 +36,13 @@ public class HomeController {
     @Autowired
     AuthenticatedUser actUser;
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("")
     public Basket homepage() {
         return basketRepository.findByUserId(actUser.getUser().getId());
     }
 
+    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
     @PostMapping("/addtobasket")
     public ResponseEntity<Basket> addToBasket(@RequestBody Pizza pizza) {
 
@@ -57,6 +59,7 @@ public class HomeController {
         return pizzaRepository.findAll();
     }
 
+    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
     @DeleteMapping("/removefrombasket")
     public ResponseEntity<Basket> removeFromBasket(@RequestBody Pizza pizza) {
 
@@ -68,6 +71,7 @@ public class HomeController {
         return ResponseEntity.ok(actBasket);
     }
 
+    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
     @PostMapping("/createpizza")
         public ResponseEntity<Pizza> createPizza(@RequestBody Pizza pizza) {
             pizzaRepository.save(pizza);
@@ -78,5 +82,18 @@ public class HomeController {
             }
             return ResponseEntity.ok(pizza);
         }
+
+    @Secured({ "ROLE_USER", "ROLE_ADMIN" })
+    @GetMapping("/{id}")
+    public ResponseEntity<Pizza> getPizza(
+            @PathVariable Integer id
+    ) {
+        Optional<Pizza> oPizza = pizzaRepository.findById(id);
+        if (oPizza.isPresent()) {
+            return ResponseEntity.ok(oPizza.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
 

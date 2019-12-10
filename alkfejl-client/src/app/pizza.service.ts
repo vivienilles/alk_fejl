@@ -31,7 +31,7 @@ export class PizzaService {
   async createPizza(pizza: Pizza): Promise<any> {
     await this.http.post('pizzas', pizza).toPromise();
   }
-  
+
   async modifyPizza(pizza: Pizza): Promise<any> {
     await this.http.patch(`pizzas/${pizza.id}`, pizza).toPromise();
   }
@@ -42,7 +42,7 @@ export class PizzaService {
         this.filteredPizzas = this.pizzas;
       } else {
         // Lehet ciklussal is :)
-        this.filteredPizzas = this.pizzas.filter(issue => {
+        this.filteredPizzas = this.pizzas.filter(pizza => {
           return pizza.status === filterValue;
         });
       }

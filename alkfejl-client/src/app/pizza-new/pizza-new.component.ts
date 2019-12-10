@@ -21,8 +21,8 @@ export class PizzaNewComponent implements OnInit {
   ngOnInit() {
     this.pizza = {
       id: null,
-      title: '',
-      iningredient: '',
+      name: '',
+      ingredient: '',
       status: 'NEW' as PizzaStatus,
       description: '',
       createdAt: null,

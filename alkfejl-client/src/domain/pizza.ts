@@ -4,8 +4,8 @@ import { Message } from './message';
 export interface Pizza {
     id: number;
     description: string;
-    iningredient: string;
-    title: string;
+    ingredient: string;
+    name: string;
     status: PizzaStatus;
     createdAt: Date;
     modifiedAt: Date;

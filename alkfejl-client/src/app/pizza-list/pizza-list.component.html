@@ -7,7 +7,7 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Topping</th>
+                <th>Ingredient List</th>
                 <th>Status</th>
             </tr>
         </thead>
@@ -16,11 +16,11 @@
                 *ngIf="pizzaService.filteredPizzas.length > 0"
             >
                 <tr
-                    *ngFor="let issue of pizzaService.filteredPizzas"
+                    *ngFor="let pizza of pizzaService.filteredPizzas"
                     [routerLink]="['/', 'pizzas', pizza.id]"
                 >
-                   <td>{{ pizza.title }}</td>
-                    <td>{{ pizza.topping }}</td>
+                   <td>{{ pizza.name }}</td>
+                    <td>{{ pizza.ingredient }}</td>
                     <td>{{ pizza.status }}</td>
                 </tr>
             </ng-container>
